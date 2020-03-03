@@ -47,14 +47,8 @@ if(status >=200 && status <300){
   const address = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section.section.section-main.restaurant-details__main > div.restaurant-details__heading.d-none.d-lg-block > ul > li:nth-child(1)').text();
   phone = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section:nth-child(4) > div.row > div:nth-child(1) > div > div:nth-child(1) > div > div > a').text();
   phone = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section:nth-child(4) > div.row > div:nth-child(1) > div > div:nth-child(1) > div > div > a').attr("href");
+  //change the phone format to compare it later with maitres restaurateurs
   if(phone){phone = phone.replace('tel:+33 ',0);}
-  /*try{
-    phone=phone.replace('tel:+33',0);
-
-  }catch(e){
-    console.log(phone);
-  }*/
-
   const restaurant = {
     name: name,
     address: address,

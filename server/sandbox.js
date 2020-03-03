@@ -1,7 +1,6 @@
 const michelin = require('./michelin');
 const maitreRestaurateur = require('./maitresR');
 const both = require('./both');
-
 const axios =require('axios');
 const fs = require('fs');
 

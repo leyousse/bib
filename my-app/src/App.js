@@ -3,19 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import Data from './result.json';
 
-/*$(function(){
-  $.getJSON('result.json',function(data){
-    var restaurant_data=
-    $.each(data,function(key,value){
-      restaurant_data += '<tr>';
-      restaurant_data += '<td'+value.name+'</td>';
-      restaurant_data += '<td'+value.address+'</td>';
-      restaurant_data += '<td'+value.phone+'</td>';
-    })
-    $('#restaurant_table').append(restaurant_data);
-  })
-})*/
-
 function App() {
   return (
     <html>
