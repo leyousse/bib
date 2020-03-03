@@ -1,41 +1,66 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+var fs = require('fs');
 
-/**
- * Parse webpage restaurant
- * @param  {String} data - html response
- * @return {Object} restaurant
- */
-const parse = data => {
+//Get the number of pages
+module.exports.Pages = async url =>{
+  const response = await axios(url);
+  const {data, status} = response;
   const $ = cheerio.load(data);
-  const name = $('.section-main h2.restaurant-details__heading--title').text();
-  const experience = $('#experience-section > ul > li:nth-child(2)').text();
+  const allRestaurants = $("body > main > section.section-main.search-results.search-listing-result > div > div > div.search-results__count > div.d-flex.align-items-end.search-results__status > div.flex-fill > h1")
+    .text()
+    .trim()
+    .split(" ");
+  const pages = Math.ceil(Number(allRestaurants[allRestaurants.length - 2]) / 20);
+  return pages;
+}
 
-  return {name, experience};
+//Get the urls
+module.exports.urls = async (pages) => {
+  const url = "https://guide.michelin.com/fr/fr/restaurants/bib-gourmand/page/";
+  let links = [];
+  for (i = 1; i <= pages; i++) {
+    const response = await axios(`${url}${i}`);
+    const { data, status } = response;
+
+    if (status >= 200 && status < 300) {
+      const $ = cheerio.load(data);
+      $('.link').each((index, value) => {
+        let link = $(value).attr('href');
+        links.push(`https://guide.michelin.com${link}`);
+      });
+    }
+    else console.error('error');
+  }
+  return links;
 };
 
-/**
- * Scrape a given restaurant url
- * @param  {String}  url
- * @return {Object} restaurant
- */
-module.exports.scrapeRestaurant = async url => {
+//Scrape a restaurant
+module.exports.scrapeRestaurant = async (url, tab) => {
   const response = await axios(url);
   const {data, status} = response;
 
-  if (status >= 200 && status < 300) {
-    return parse(data);
-  }
+if(status >=200 && status <300){
 
-  console.error(status);
+  const $ = cheerio.load(data)
+  const name =  $('.section-main h2.restaurant-details__heading--title').text();
+  const address = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section.section.section-main.restaurant-details__main > div.restaurant-details__heading.d-none.d-lg-block > ul > li:nth-child(1)').text();
+  phone = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section:nth-child(4) > div.row > div:nth-child(1) > div > div:nth-child(1) > div > div > a').text();
+  phone = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section:nth-child(4) > div.row > div:nth-child(1) > div > div:nth-child(1) > div > div > a').attr("href");
+  if(phone){phone = phone.replace('tel:+33 ',0);}
+  /*try{
+    phone=phone.replace('tel:+33',0);
 
-  return null;
-};
+  }catch(e){
+    console.log(phone);
+  }*/
 
-/**
- * Get all France located Bib Gourmand restaurants
- * @return {Array} restaurants
- */
-module.exports.get = () => {
-  return [];
+  const restaurant = {
+    name: name,
+    address: address,
+    phone: phone
+  };
+  tab.push(restaurant);
+} else console.error('error');
+return tab;
 };
