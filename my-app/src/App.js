@@ -1,7 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './logo_bib_maitresR.svg';
 import './App.css';
 import Data from './result.json';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ImageBackground from 'react-bootstrap/Image'
+/*import {BrowserRouter as Router} from "react-router-dom";
+import {
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBNavbarToggler,
+  MDBCollapse,
+  MDBMask,
+  MDBRow,
+  MDBCol,
+  MDBBtn,
+  MDBView,
+  MDBContainer,
+  MDBFormInline,
+  MDBAnimation
+} from "mdbreact";*/
+import restaurant_img from './restaurant-3.jpg'
 
 function App() {
   return (
@@ -9,10 +30,12 @@ function App() {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    
     <div className="App">
+    <ImageBackground src={restaurant_img} fluid/>
       <header className="App-header">
         <p className="main_subject">
-          BibGourmand et Maîtres Restaurateurs
+          Maîtres Gourmands
         </p>
         <a
           className="App-link"

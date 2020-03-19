@@ -52,5 +52,5 @@ async function Both(){
 }
 
 //Michelin();
-//MaitresR();
-Both();
+MaitresR();
+//Both();

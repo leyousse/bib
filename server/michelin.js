@@ -45,14 +45,23 @@ if(status >=200 && status <300){
   const $ = cheerio.load(data)
   const name =  $('.section-main h2.restaurant-details__heading--title').text();
   const address = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section.section.section-main.restaurant-details__main > div.restaurant-details__heading.d-none.d-lg-block > ul > li:nth-child(1)').text();
-  phone = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section:nth-child(4) > div.row > div:nth-child(1) > div > div:nth-child(1) > div > div > a').text();
   phone = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section:nth-child(4) > div.row > div:nth-child(1) > div > div:nth-child(1) > div > div > a').attr("href");
+  //scraping more to have details on the website
+  const details = $('body > main > div.restaurant-details > div.container > div > div.col-xl-4.order-xl-8.col-lg-5.order-lg-7.restaurant-details__aside > div.restaurant-details__heading.d-lg-none > ul > li.restaurant-details__heading-price').text().trim().replace(/\s/g, '').split("•");
+  const price = details[0];
+  const type = details[1];
+  const experience_array = $('#experience-section > ul > li:nth-child(2)').text().trim().split(' ');
+  const experience = experience_array[experience_array.length - 2] + ' ' + experience_array[experience_array.length - 1];
   //change the phone format to compare it later with maitres restaurateurs
   if(phone){phone = phone.replace('tel:+33 ',0);}
   const restaurant = {
     name: name,
     address: address,
-    phone: phone
+    phone: phone,
+    price: price,
+    type: type,
+    experience,
+    url:url
   };
   tab.push(restaurant);
 } else console.error('error');
