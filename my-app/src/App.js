@@ -6,10 +6,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ImageBackground from 'react-bootstrap/Image'
 import restaurant_img from './restaurant-3.jpg'
 
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("my_input");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("my_table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
 function App() {
   return (
     <html>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <div className="App">
@@ -41,8 +61,7 @@ function App() {
           
         </p>
         <div class="App-maincontent">
-          <script src='./filtering.js'/>
-          <input class="form-control" id="my_input" type="text" placeholder="Search.." onKeuUp="myFunction()"/>
+          <input class="form-control" id="my_input" type="text" placeholder="Search.." onKeyUp={myFunction()}/>
           <p></p>
             <table class="table table-dark" id="my_table"> 
             <thead>
