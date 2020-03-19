@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<h2>My Customers</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<table id="myTable">
+<thead><tr><th>Name</th><th>Phone</th><th>Adress</th></tr></thead><tr><td>Les Jardins du Léman</td><td>04 50 72 80 32</td><td>Grande-Rue, Yvoire, 74140, France</td></tr><tr><td>Le Manoir du Sphinx</td><td>02 96 23 25 42</td><td>67 chemin de la Messe, Perros-Guirec, 22700, France</td></tr><tr><td>Julien</td><td>03 88 97 30 09</td><td>Route de Strasbourg, Fouday, 67130, France</td></tr><tr><td>Le Chalet</td><td>05 61 64 24 31</td><td>4 avenue Durandeau, Ax-les-Thermes, 09110, France</td></tr><tr><td>Le Petit St-Thomas</td><td>02 51 49 05 99</td><td>25 rue de Lattre-de-Tassigny, La Garnache, 85710, France</td></tr><tr><td>Winstub du Chambard</td><td>03 89 47 10 17</td><td>9-13 rue du Général-de-Gaulle, Kaysersberg, 68240, France</td></tr><tr><td>Auberge de la Rivière</td><td>02 51 52 32 15</td><td>rue du Port-de-la-Fouarne, Velluire, 85770, France</td></tr><tr><td>Les Canailles Ménilmontant</td><td>01 43 58 45 45</td><td>15 rue des Panoyaux, Paris, 75020, France</td></tr><tr><td>La Closerie des Roses</td><td>02 40 98 33 30</td><td>455 La Haute-Meilleraie, Varades, 44370, France</td></tr><tr><td>Le Saint-Jacques</td><td>02 43 89 95 50</td><td>Place du Monument, Thorigné-sur-Dué, 72160, France</td></tr><tr><td>Le Grand St-Benoît</td><td>02 38 35 11 92</td><td>7 place St-André, Saint-Benoît-sur-Loire, 45730, France</td></tr><tr><td>Au Chapeau Rouge</td><td>02 47 98 08 08</td><td>49 place du Général-de-Gaulle, Chinon, 37500, France</td></tr><tr><td>Maison Gambert</td><td>04 75 09 19 85</td><td>2 rue de la Petite-Pirelle, Tain-l'Hermitage, 26600, France</td></tr><tr><td>France et Fuchsias</td><td>02 33 54 40 41</td><td>20 rue du Maréchal-Foch, Saint-Vaast-la-Hougue, 50550, France</td></tr><tr><td>Côté Bistro</td><td>02 54 20 62 30</td><td>25 rue de Chambord, Montlivault, 41350, France</td></tr><tr><td>L'Embellie</td><td>03 85 50 81 81</td><td>le Bourg, Sainte-Cécile, 71250, France</td></tr><tr><td>Auberge de l'Île</td><td>02 47 58 51 07</td><td>3 place Bouchard, L'Île-Bouchard, 37220, France</td></tr><tr><td>La Table</td><td>04 94 70 55 95</td><td>1 traverse de Jas, Les Ribas, Tourtour, 83690, France</td></tr><tr><td>Auberge de Ti-Coz</td><td>02 98 94 50 02</td><td>4 Hent-Koz, Ty-Sanquer, 29000, France</td></tr><tr><td>Voyages des sens</td><td>04 74 51 39 94</td><td>33 rue Principale, Treffort, 01370, France</td></tr><tr><td>La Fleur de Sel</td><td>04 79 37 49 98</td><td>15 route du Portelin, Cevins, 73730, France</td></tr><tr><td>Ttotta</td><td>05 59 47 03 55</td><td>Espace Ibarrondoan, Saint-Pée-sur-Nivelle, 64310, France</td></tr><tr><td>La Forêt</td><td>02 37 37 78 50</td><td>22 rue de Verdun, Senonches, 28250, France</td></tr><tr><td>Hôtel de France</td><td>04 70 07 60 26</td><td>1 rue Marx-Dormoy, Montmarault, 03390, France</td></tr><tr><td>Bistrot des Anges</td><td>04 92 18 18 28</td><td>rue de l'Ouest, Le Cannet, 06110, France</td></tr><tr><td>La Table de Léo</td><td>05 53 57 89 15</td><td>Le Bourg, Saint-Avit-Sénieur, 24440, France</td></tr><tr><td>Chez Michel</td><td>01 44 53 06 20</td><td>10 rue de Belzunce, Paris, 75010, France</td></tr><tr><td>Au Raisin d'Or</td><td>03 89 71 05 69</td><td>1 rue de l'Église, Zimmerbach, 68230, France</td></tr><tr><td>Le Bon Accueil</td><td>03 83 25 62 10</td><td>1 rue de Laval, Richardménil, 54630, France</td></tr><tr><td>Cheval Blanc</td><td>03 89 25 81 86</td><td>1 rue de Bisel, Feldbach, 68640, France</td></tr><tr><td>Auberge des Deux Magots</td><td>02 99 90 60 75</td><td>1 place du Bouffay, La Roche-Bernard, 56130, France</td></tr><tr><td>L'Épicurien</td><td>05 63 53 10 70</td><td>42 place Jean-Jaurès, Albi, 81000, France</td></tr><tr><td>Auberge Pyrénées Cévennes</td><td>01 43 57 33 78</td><td>106 rue de la Folie-Méricourt, Paris, 75011, France</td></tr><tr><td>Le Rabelais</td><td>04 90 50 84 40</td><td>8 rue Auguste-Fabre, Saint-Chamas, 13250, France</td></tr><tr><td>Le Réciproque</td><td>09 86 37 80 77</td><td>14 rue Ferdinand-Flocon, Paris, 75018, France</td></tr><tr><td>Le Lancelot</td><td>02 38 32 91 15</td><td>12 rue des Déportés, Chilleurs-aux-Bois, 45170, France</td></tr><tr><td>Le St-Georges</td><td>04 67 68 31 38</td><td>4 boulevard Maréchal-Foch, Palavas-les-Flots, 34250, France</td></tr><tr><td>Coteaux et Fourchettes</td><td>04 90 66 35 99</td><td>Route de Violès, Cairanne, 84290, France</td></tr><tr><td>Auberge des Chenêts</td><td>03 86 34 23 34</td><td>10 route Nationale 6, Valloux, 89200, France</td></tr><tr><td>À la 12</td><td>03 87 01 30 18</td><td>6 place de la République, Delme, 57590, France</td></tr><tr><td>La Griotte</td><td>03 81 57 17 71</td><td>3 rue des Cerisiers, Saules, 25580, France</td></tr><tr><td>La Maison</td><td>05 45 35 21 77</td><td>1 rue du 14-Juillet, Cognac, 16100, France</td></tr><tr><td>Histoire Ancienne</td><td>03 21 34 11 20</td><td>20 rue Royale, Calais, 62100, France</td></tr><tr><td>Au Colombier</td><td>04 74 67 04 68</td><td>126 allée Colombier, Anse, 69480, France</td></tr><tr><td>Manoir de la Pommeraie</td><td>02 31 68 07 71</td><td>L'Auvère, Vire, 14500, France</td></tr><tr><td>Les Épices Curiens</td><td>03 29 86 84 58</td><td>3b place de la Gare, Écouviez, 55600, France</td></tr><tr><td>Le Dauphin</td><td>02 31 86 22 26</td><td>29 rue Gemare, Caen, 14000, France</td></tr><tr><td>La Maison Carrier</td><td>04 50 53 00 03</td><td>44 route du Bouchet, Chamonix-Mont-Blanc, 74400, France</td></tr><tr><td>Les Capucins</td><td>03 84 28 04 60</td><td>20 faubourg de Montbéliard, Belfort, 90000, France</td></tr><tr><td>La Table d'Aimé</td><td>04 68 34 35 77</td><td>4 Rue Francisco Ferrer, Rivesaltes, 66600, France</td></tr><tr><td>Vidal</td><td>04 71 08 70 50</td><td>Place du Marché, Saint-Julien-Chapteuil, 43260, France</td></tr><tr><td>La Balade des Saveurs</td><td>04 90 95 27 85</td><td>3 quai Jean-Jaurès, L'Isle-sur-la-Sorgue, 84800, France</td></tr><tr><td>Ar Maen Hir</td><td>02 56 10 18 37</td><td>15 bis rue du Prieuré, Locronan, 29180, France</td></tr><tr><td>Le Jardin d'Alice</td><td>03 21 68 88 88</td><td>1098 route de Lillers, Busnes, 62350, France</td></tr></table>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+</body>
+</html>
